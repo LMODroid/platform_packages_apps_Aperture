@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+ * SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -35,7 +35,6 @@ import android.view.GestureDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.OrientationEventListener
-import android.view.ScaleGestureDetector
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
@@ -67,6 +66,7 @@ import androidx.camera.view.PreviewView
 import androidx.camera.view.ScreenFlashView
 import androidx.camera.view.onPinchToZoom
 import androidx.camera.view.video.AudioConfig
+import androidx.camera.viewfinder.core.ZoomGestureDetector
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
@@ -76,7 +76,6 @@ import androidx.core.location.LocationManagerCompat
 import androidx.core.location.LocationRequestCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowCompat.getInsetsController
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
@@ -152,7 +151,7 @@ import androidx.camera.core.CameraState as CameraXCameraState
 
 @androidx.camera.camera2.interop.ExperimentalCamera2Interop
 @androidx.camera.core.ExperimentalZeroShutterLag
-open class CameraActivity : AppCompatActivity() {
+open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
     // View models
     private val model: CameraViewModel by viewModels()
 
@@ -288,17 +287,15 @@ open class CameraActivity : AppCompatActivity() {
             }
         })
     }
-    private val scaleGestureDetector by lazy {
-        ScaleGestureDetector(this, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-            override fun onScale(detector: ScaleGestureDetector): Boolean {
+    private val zoomGestureDetector by lazy {
+        ZoomGestureDetector(this) { type, detector ->
+            if (type == ZoomGestureDetector.ZOOM_GESTURE_MOVE) {
                 cameraController.onPinchToZoom(detector.scaleFactor)
-
                 handler.removeMessages(MSG_ON_PINCH_TO_ZOOM)
                 handler.sendMessageDelayed(handler.obtainMessage(MSG_ON_PINCH_TO_ZOOM), 500)
-
-                return true
             }
-        })
+            true
+        }
     }
 
     private val handler = object : Handler(Looper.getMainLooper()) {
@@ -539,11 +536,14 @@ open class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        hideStatusBars()
-
-        setContentView(R.layout.activity_camera)
-
+        // Setup edge-to-edge
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        // Hide the status bars
+        window.updateBarsVisibility(
+            WindowInsetsControllerCompat.BEHAVIOR_DEFAULT,
+            statusBars = true,
+        )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
             && keyguardManager.isKeyguardLocked
@@ -696,7 +696,7 @@ open class CameraActivity : AppCompatActivity() {
 
         // Observe manual focus
         viewFinder.setOnTouchListener { _, event ->
-            if (scaleGestureDetector.onTouchEvent(event) && scaleGestureDetector.isInProgress) {
+            if (zoomGestureDetector.onTouchEvent(event) && zoomGestureDetector.isInProgress) {
                 return@setOnTouchListener true
             }
             return@setOnTouchListener gestureDetector.onTouchEvent(event)
@@ -838,7 +838,10 @@ open class CameraActivity : AppCompatActivity() {
             }
         }
         lensSelectorLayout.onZoomRatioChangeCallback = {
-            cameraController.setZoomRatio(it)
+            smoothZoom(it)
+        }
+        lensSelectorLayout.onResetZoomRatioCallback = {
+            resetZoom()
         }
 
         // Set capture preview callback
@@ -2370,15 +2373,6 @@ open class CameraActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun hideStatusBars() {
-        val windowInsetsController = getInsetsController(window, window.decorView)
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide the status bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.statusBars())
-    }
-
     private fun startTimerAndRun(runnable: () -> Unit) {
         // Allow forcing timer if requested by the assistant
         val timerModeSeconds =
@@ -2444,32 +2438,6 @@ open class CameraActivity : AppCompatActivity() {
     }
 
     /**
-     * Zoom in by a power of 2.
-     */
-    private fun zoomIn() {
-        val acquired = zoomGestureMutex.tryLock()
-        if (!acquired) {
-            return
-        }
-
-        val zoomState = cameraController.zoomState.value ?: return
-
-        ValueAnimator.ofFloat(
-            zoomState.zoomRatio,
-            zoomState.zoomRatio.nextPowerOfTwo().takeUnless {
-                it > zoomState.maxZoomRatio
-            } ?: zoomState.maxZoomRatio
-        ).apply {
-            addUpdateListener {
-                cameraController.setZoomRatio(it.animatedValue as Float)
-            }
-            addListener(onEnd = {
-                zoomGestureMutex.unlock()
-            })
-        }.start()
-    }
-
-    /**
      * Show a toast warning the user that no camera is available and close the activity.
      */
     private fun noCamera() {
@@ -2480,9 +2448,11 @@ open class CameraActivity : AppCompatActivity() {
     }
 
     /**
-     * Zoom out by a power of 2.
+     * Apply the specified zoom smoothly. The value will be automatically clamped
+     * between min and max.
+     * @param zoomRatio The zoom ratio to apply
      */
-    private fun zoomOut() {
+    private fun smoothZoom(zoomRatio: Float) {
         val acquired = zoomGestureMutex.tryLock()
         if (!acquired) {
             return
@@ -2492,17 +2462,36 @@ open class CameraActivity : AppCompatActivity() {
 
         ValueAnimator.ofFloat(
             zoomState.zoomRatio,
-            zoomState.zoomRatio.previousPowerOfTwo().takeUnless {
-                it < zoomState.minZoomRatio
-            } ?: zoomState.minZoomRatio
+            zoomRatio.coerceIn(zoomState.minZoomRatio, zoomState.maxZoomRatio)
         ).apply {
             addUpdateListener {
                 cameraController.setZoomRatio(it.animatedValue as Float)
             }
-            addListener(onEnd = {
-                zoomGestureMutex.unlock()
-            })
+            addListener(
+                onEnd = {
+                    zoomGestureMutex.unlock()
+                }
+            )
         }.start()
+    }
+
+    /**
+     * Reset the zoom to 1.0x (value relative to the lens, not of the FOV).
+     */
+    private fun resetZoom() = smoothZoom(1f)
+
+    /**
+     * Zoom in by a power of 2.
+     */
+    private fun zoomIn() = cameraController.zoomState.value?.zoomRatio?.let {
+        smoothZoom(it.nextPowerOfTwo())
+    }
+
+    /**
+     * Zoom out by a power of 2.
+     */
+    private fun zoomOut() = cameraController.zoomState.value?.zoomRatio?.let {
+        smoothZoom(it.previousPowerOfTwo())
     }
 
     /**
