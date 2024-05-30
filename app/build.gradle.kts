@@ -72,7 +72,7 @@ android {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0"))
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-ktx:1.7.2")
@@ -107,7 +107,8 @@ dependencies {
     implementation("androidx.media3:media3-ui:$media3Version")
 
     // ZXing
-    implementation("com.google.zxing:core:3.5.2")
+    implementation("com.google.zxing:core:3.5.3")
+    implementation("io.github.zxing-cpp:android:2.2.0")
 
     // Coil
     implementation("io.coil-kt:coil:2.4.0")
