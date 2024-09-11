@@ -7,6 +7,7 @@ package org.lineageos.aperture
 
 import android.hardware.input.InputManager
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyCharacterMap
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -32,6 +33,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import org.lineageos.aperture.ext.gestureActionToString
 import org.lineageos.aperture.ext.setOffset
+import org.lineageos.aperture.ext.stringToGestureAction
 import org.lineageos.aperture.models.HardwareKey
 import org.lineageos.aperture.utils.CameraSoundsUtils
 import org.lineageos.aperture.utils.PermissionsUtils
@@ -229,7 +231,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
 
             for (hardwareKey in HardwareKey.entries) {
                 val actionPreference = ListPreference(context, null).apply {
-                    key = "${hardwareKey.sharedPreferencesKeyPrefix}_action"
+                    key = hardwareKey.actionSharedPreferenceKey
                     setTitle(hardwareKey.actionPreferenceTitleStringResId)
                     setDialogTitle(hardwareKey.actionPreferenceTitleStringResId)
                     when {
@@ -259,7 +261,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
                     singleButtonsPreferenceCategory?.addPreference(actionPreference)
                 } else {
                     val invertPreference = SwitchPreference(context, null).apply {
-                        key = "${hardwareKey.sharedPreferencesKeyPrefix}_invert"
+                        key = hardwareKey.invertSharedPreferenceKey
                         setTitle(hardwareKey.invertPreferenceTitleStringResId!!)
                         setSummary(hardwareKey.invertPreferenceSummaryStringResId!!)
                         setDefaultValue(false)
@@ -276,6 +278,26 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
 
                     keyCategory.addPreference(actionPreference)
                     keyCategory.addPreference(invertPreference)
+
+                    actionPreference.setOnPreferenceChangeListener { _, newValue ->
+                        val value = newValue as String
+                        val gestureAction = stringToGestureAction(value) ?: run {
+                            Log.wtf(LOG_TAG, "Got invalid gesture action $value")
+                            null
+                        }
+
+                        val enableInvert = gestureAction?.isTwoWayAction ?: true
+
+                        invertPreference.isEnabled = enableInvert
+                        if (!enableInvert) {
+                            invertPreference.isChecked = false
+                        }
+
+                        true
+                    }
+                    actionPreference.onPreferenceChangeListener!!.onPreferenceChange(
+                        actionPreference, actionPreference.value
+                    )
                 }
             }
 
@@ -320,7 +342,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
                     keyCategory?.isVisible = present
                 } else {
                     val actionPreference = findPreference<ListPreference>(
-                        "${hardwareKey.sharedPreferencesKeyPrefix}_action"
+                        hardwareKey.actionSharedPreferenceKey
                     )
 
                     actionPreference?.isVisible = present
@@ -331,7 +353,17 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
 
             singleButtonsPreferenceCategory?.isVisible = singleKeysPresent
         }
+
+        private val HardwareKey.actionSharedPreferenceKey: String
+            get() = "${sharedPreferencesKeyPrefix}_action"
+
+        private val HardwareKey.invertSharedPreferenceKey: String
+            get() = "${sharedPreferencesKeyPrefix}_invert"
     }
 
     class ProcessingSettingsFragment : SettingsFragment(R.xml.processing_preferences)
+
+    companion object {
+        private val LOG_TAG = SettingsActivity::class.simpleName!!
+    }
 }
