@@ -1,29 +1,15 @@
 /*
- * SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+ * SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import org.lineageos.generatebp.GenerateBpPlugin
 import org.lineageos.generatebp.GenerateBpPluginExtension
 import org.lineageos.generatebp.models.Module
 
 plugins {
     id("com.android.application")
     id("kotlin-android")
-}
-
-apply {
-    plugin<GenerateBpPlugin>()
-}
-
-buildscript {
-    repositories {
-        maven("https://raw.githubusercontent.com/lineage-next/gradle-generatebp/v1.16/.m2")
-    }
-
-    dependencies {
-        classpath("org.lineageos:gradle-generatebp:+")
-    }
+    id("org.lineageos.generatebp")
 }
 
 android {
@@ -76,7 +62,7 @@ android {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.23"))
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.activity:activity-ktx:1.9.2")
@@ -88,7 +74,7 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
 
     // CameraX core library using the camera2 implementation
-    val cameraxVersion = "1.5.0-alpha04"
+    val cameraxVersion = "1.5.0-alpha05"
     // The following line is optional, as the core library is included indirectly by camera-camera2
     implementation("androidx.camera:camera-core:${cameraxVersion}")
     implementation("androidx.camera:camera-camera2:${cameraxVersion}")
@@ -99,7 +85,7 @@ dependencies {
     // If you want to additionally use the CameraX View class
     implementation("androidx.camera:camera-view:${cameraxVersion}")
     // If you want to additionally use the CameraX Viewfinder class
-    implementation("androidx.camera.viewfinder:viewfinder-core:1.4.0-alpha09")
+    implementation("androidx.camera.viewfinder:viewfinder-core:1.4.0-alpha12")
     // If you want to additionally use the CameraX Extensions library
     implementation("androidx.camera:camera-extensions:${cameraxVersion}")
 
@@ -112,15 +98,16 @@ dependencies {
 
     // ZXing
     implementation("com.google.zxing:core:3.5.3")
-    implementation("io.github.zxing-cpp:android:2.2.0")
+    implementation("io.github.zxing-cpp:android:2.3.0")
 
     // Coil
-    implementation("io.coil-kt:coil:2.4.0")
-    implementation("io.coil-kt:coil-video:2.4.0")
+    implementation("io.coil-kt.coil3:coil:3.0.4")
+    implementation("io.coil-kt.coil3:coil-video:3.0.4")
 }
 
 configure<GenerateBpPluginExtension> {
     targetSdk.set(android.defaultConfig.targetSdk!!)
+    minSdk.set(android.defaultConfig.minSdk!!)
     availableInAOSP.set { module: Module ->
         when {
             module.group.startsWith("androidx") -> {
