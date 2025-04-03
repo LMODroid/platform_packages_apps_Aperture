@@ -65,11 +65,6 @@ android_app {
         proguard_flags_files: ["proguard-rules.pro"],
         shrink_resources: true,
     },
-
-    aaptflags: [
-        "--rename-manifest-package",
-        "com.libremobileos.aperture",
-    ],
 }
 
 prebuilt_etc {
