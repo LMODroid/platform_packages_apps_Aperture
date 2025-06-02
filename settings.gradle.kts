@@ -5,9 +5,15 @@
 
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
+        gradlePluginPortal()
         maven("https://raw.githubusercontent.com/lineage-next/gradle-generatebp/v1.21/.m2")
     }
 }
@@ -15,7 +21,7 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven("https://raw.githubusercontent.com/lineage-next/camerax-aperture/f325416f8533fb2ff540259ea955c541460ea785/.m2")
+        maven("https://raw.githubusercontent.com/lineage-next/camerax-aperture/d6428c8e0e6cce692619feb53ae0376ca990ea3a/.m2")
         google()
         mavenCentral()
     }
