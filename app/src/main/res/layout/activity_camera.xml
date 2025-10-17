@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:scaleType="fitCenter" />
 
-    <org.lineageos.aperture.ui.PreviewBlurView
+    <org.lineageos.aperture.ui.views.PreviewBlurView
         android:id="@+id/previewBlurView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/viewFinder"
         tools:ignore="ContentDescription" />
 
-    <org.lineageos.aperture.ui.GridView
+    <org.lineageos.aperture.ui.views.GridView
         android:id="@+id/gridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
-    <org.lineageos.aperture.ui.LevelerView
+    <org.lineageos.aperture.ui.views.LevelerView
         android:id="@+id/levelerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -65,8 +65,8 @@
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
-    <org.lineageos.aperture.ui.InfoChipView
-        android:id="@+id/infoChipView"
+    <org.lineageos.aperture.ui.views.IslandView
+        android:id="@+id/islandView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
-    <org.lineageos.aperture.ui.CountDownView
+    <org.lineageos.aperture.ui.views.CountDownView
         android:id="@+id/countDownView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -87,7 +87,7 @@
         app:layout_constraintStart_toStartOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="@+id/viewFinder" />
 
-    <org.lineageos.aperture.ui.HorizontalSlider
+    <org.lineageos.aperture.ui.views.HorizontalSlider
         android:id="@+id/zoomLevel"
         android:layout_width="250dp"
         android:layout_height="32dp"
@@ -100,7 +100,7 @@
         app:thumbTextSize="10dp"
         app:trackColor="#7FCCCCCC" />
 
-    <org.lineageos.aperture.ui.VerticalSlider
+    <org.lineageos.aperture.ui.views.VerticalSlider
         android:id="@+id/exposureLevel"
         android:layout_width="32dp"
         android:layout_height="250dp"
@@ -233,7 +233,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pro_button" />
 
-        <org.lineageos.aperture.ui.LensSelectorLayout
+        <ImageButton
+            android:id="@+id/googleLensButton"
+            style="@style/Theme.Aperture.Camera.SecondaryBottomBarButton"
+            android:layout_marginStart="40dp"
+            android:contentDescription="@string/google_lens_button_description"
+            android:src="@drawable/ic_google_lens"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@android:color/white" />
+
+        <org.lineageos.aperture.ui.views.LensSelectorLayout
             android:id="@+id/lensSelectorLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -341,20 +353,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
-        android:id="@+id/googleLensButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:background="@null"
-        android:contentDescription="@string/google_lens_button_description"
-        android:scaleType="center"
-        android:src="@drawable/ic_google_lens"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/cameraModeSelectorLayout"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <org.lineageos.aperture.ui.CameraModeSelectorLayout
+    <org.lineageos.aperture.ui.views.CameraModeSelectorLayout
         android:id="@+id/cameraModeSelectorLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

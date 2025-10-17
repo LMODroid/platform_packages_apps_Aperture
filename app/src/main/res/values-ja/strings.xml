@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -99,6 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">最小の遅延</string>
     <string name="enable_zsl_title">利用可能な場合は ZSL を有効にする</string>
     <string name="enable_zsl_summary">カメラが対応している場合、ゼロシャッターラグモードを使用します。このモードでは写真のエフェクトは無効になります。このモードは実験的であることに注意してください。</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">画像を JPEG Ultra HDR として保存</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">利用可能な場合は、HDR 画像を改善するために JPEG Ultra HDR として保存します</string>
+    <string name="enable_raw_image_capture_title">RAW 画像キャプチャを有効化</string>
+    <string name="enable_raw_image_capture_summary">RAW 画像キャプチャを有効にします。RAW 画像キャプチャが有効な場合、写真は JPEG Ultra HDR として保存できません</string>
+    <string name="disable_jpeg_with_raw_title">RAW 時に JPEG を無効化</string>
+    <string name="disable_jpeg_with_raw_summary">RAW 画像キャプチャが有効な場合は JPEG を無効にします</string>
     <string name="photo_ffc_mirror_title">フロントカメラを反転</string>
     <string name="photo_ffc_mirror_summary">フロントカメラの写真をプレビュー表示と同じ向きで保存します</string>
     <string name="video_stabilization_title">動画の安定化を有効にする</string>

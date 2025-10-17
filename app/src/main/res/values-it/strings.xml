@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -99,6 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">Minimizza latenza</string>
     <string name="enable_zsl_title">Abilita ZSL quando disponibile</string>
     <string name="enable_zsl_summary">Usa la modalità Zero-Shutter Lag (ritardo di scatto nullo) quando la fotocamera lo supporta. In questa modalità gli effetti delle foto sono disabilitati. Nota che questa modalità attualmente è sperimentale</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">Salva immagini come JPEG Ultra HDR</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">Salva le immagini come JPEG Ultra HDR quando disponibile per migliorare le immagini HDR</string>
+    <string name="enable_raw_image_capture_title">Abilita acquisizione di immagini RAW</string>
+    <string name="enable_raw_image_capture_summary">Abilita l\'acquisizione di immagini RAW. Le foto non possono essere memorizzate come JPEG Ultra HDR quando l\'acquisizione RAW è abilitata</string>
+    <string name="disable_jpeg_with_raw_title">Disabilita JPEG con RAW</string>
+    <string name="disable_jpeg_with_raw_summary">Disabilita JPEG quando l\'acquisizione di immagini RAW è abilitata</string>
     <string name="photo_ffc_mirror_title">Fotocamera frontale a specchio</string>
     <string name="photo_ffc_mirror_summary">Salva le foto della fotocamera frontale come appaiono nell\'anteprima</string>
     <string name="video_stabilization_title">Abilita la stabilizzazione dei video</string>

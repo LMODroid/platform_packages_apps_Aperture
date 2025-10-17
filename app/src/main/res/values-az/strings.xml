@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -74,7 +74,7 @@
     <string name="advanced_header">Qabaqcıl</string>
     <string name="bright_screen_title">Parlaq ekran</string>
     <string name="bright_screen_summary" formatted="false">Parlaqlığı 100%-ə kilidləyir</string>
-    <string name="save_location_title">Yer məlumatını saxla</string>
+    <string name="save_location_title">Yer verilərini saxla</string>
     <string name="save_location_summary">Metadataya GPS yerini daxil et</string>
     <string name="save_location_toast">İstifadəçi tərəfindən verilməyən yerləşmə icazələri.</string>
     <string name="shutter_sound_title">Çəkiliş səsi</string>
@@ -99,6 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">Minimum gecikmə</string>
     <string name="enable_zsl_title">Əlçatan olduqda ZSL-i fəallaşdır</string>
     <string name="enable_zsl_summary">Kamera dəstəklədikdə Sıfır Sürgü Gecikməsi (ZSL) rejimini istifadə edin. Bu rejimdə foto effektlər sıradan çıxardılır. Unutmayın ki, bu, hazırda təcrübi rejimdir.</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">Təsvirləri JPEG Ultra HDR kimi saxla</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">HDR təsvirləri təkmilləşdirmək mümkün olduqda, təsvirləri JPEG Ultra HDR kimi saxla</string>
+    <string name="enable_raw_image_capture_title">RAW təsvir yaxalamanı fəallaşdır</string>
+    <string name="enable_raw_image_capture_summary">RAW təsvir yaxalamanı fəallaşdır. RAW yaxalama fəal olduqda, fotolar JPEG Ultra HDR kimi saxlanıla bilməz</string>
+    <string name="disable_jpeg_with_raw_title">RAW ilə JPEG-i sıradan çıxart</string>
+    <string name="disable_jpeg_with_raw_summary">RAW təsvir yaxalama fəal olduqda, JPEG-i sıradan çıxart</string>
     <string name="photo_ffc_mirror_title">Güzgü ön kamera</string>
     <string name="photo_ffc_mirror_summary">Ön kamera fotolarını önizləmədə göründüyü kimi saxla</string>
     <string name="video_stabilization_title">Video sabitləməni fəallaşdır</string>
@@ -120,7 +126,7 @@
     <string name="noise_reduction_mode_high_quality">Yüksək keyfiyyət</string>
     <string name="noise_reduction_mode_minimal">Minimal</string>
     <string name="shading_mode_title">Vinyet düzəltmə</string>
-    <string name="shading_mode_summary">Təsvir datasına tətbiq edilən linza kölgəsi keyfiyyətinin düzəldilməsi.</string>
+    <string name="shading_mode_summary">Təsvir verisinə tətbiq edilən linza kölgəsi keyfiyyətinin düzəldilməsi.</string>
     <string name="shading_mode_default">İlkin</string>
     <string name="shading_mode_off">Bağlı</string>
     <string name="shading_mode_fast">Sürətli</string>
@@ -147,7 +153,7 @@
     <string name="shortcut_video">Video çək</string>
     <string name="shortcut_qr">Barkod skan et</string>
     <string name="location_permission_dialog_title">Foto və video yeri əlavə et</string>
-    <string name="location_permission_dialog_description">Hər çəkilişə yerləşmənin meta məlumatlarını daxil edərək xatirələrinizi xəritələndirin.</string>
+    <string name="location_permission_dialog_description">Hər çəkilişə yer meta verilərini daxil edərək xatirələrinizi xəritələndirin.</string>
     <string name="location_permission_dialog_later">Daha sonra</string>
     <string name="location_permission_dialog_turn_on">İşə sal</string>
     <string name="error_max_cameras_in_use">Maksimum açıq kamera sayına çatıldı, cihazın kameralarını istifadə edərək digər tətbiqləri bağlamağa çalışın.</string>

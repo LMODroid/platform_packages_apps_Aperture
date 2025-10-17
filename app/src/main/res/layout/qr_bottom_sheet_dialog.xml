@@ -11,7 +11,7 @@
     android:paddingHorizontal="16dp">
 
     <ImageView
-        android:id="@+id/drag"
+        android:id="@+id/dragImageView"
         android:layout_width="32dp"
         android:layout_height="4dp"
         android:layout_alignParentTop="true"
@@ -36,14 +36,14 @@
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drag">
+        app:layout_constraintTop_toBottomOf="@+id/dragImageView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/icon"
+                android:id="@+id/iconImageView"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="16dp"
@@ -63,19 +63,19 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/share"
-                app:layout_constraintStart_toEndOf="@+id/icon"
+                app:layout_constraintEnd_toStartOf="@+id/shareImageButton"
+                app:layout_constraintStart_toEndOf="@+id/iconImageView"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/titleTextView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:singleLine="true"
                     android:textColor="?attr/colorOnSurface"
                     android:textStyle="bold"
                     android:typeface="normal"
-                    app:layout_constraintBottom_toTopOf="@+id/data"
+                    app:layout_constraintBottom_toTopOf="@+id/dataTextView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
                     tools:text="Title" />
 
                 <TextView
-                    android:id="@+id/data"
+                    android:id="@+id/dataTextView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:singleLine="true"
@@ -93,13 +93,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/title"
-                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    app:layout_constraintStart_toStartOf="@+id/titleTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTextView"
                     tools:text="URL" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageButton
-                android:id="@+id/share"
+                android:id="@+id/shareImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -110,12 +111,12 @@
                 android:padding="5dp"
                 android:src="@drawable/ic_share"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/copy"
+                app:layout_constraintEnd_toStartOf="@+id/copyImageButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="?attr/colorOnSurface" />
 
             <ImageButton
-                android:id="@+id/copy"
+                android:id="@+id/copyImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -131,25 +132,18 @@
                 app:tint="?attr/colorOnSurface" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
-    <HorizontalScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/actionsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <LinearLayout
-            android:id="@+id/actionsLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="72dp"
-            android:divider="@drawable/qr_bottom_sheet_action_button_divider"
-            android:orientation="horizontal"
-            android:paddingVertical="4dp"
-            android:showDividers="middle" />
-
-    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

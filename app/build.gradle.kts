@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.lineageos.generatebp.GenerateBpPluginExtension
 import org.lineageos.generatebp.models.Module
 
@@ -14,12 +15,12 @@ plugins {
 
 android {
     namespace = "org.lineageos.aperture"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "org.lineageos.aperture"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }
@@ -52,8 +53,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
     }
 
     lint {
@@ -81,14 +84,11 @@ dependencies {
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.preference)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.material)
     implementation(libs.coil)
     implementation(libs.coil.video)
-    implementation(libs.kotlinx.coroutines.guava)  {
-        // Exclude compile time dependencies
-        exclude("com.google.j2objc", "j2objc-annotations")
-        exclude("org.checkerframework", "checker-qual")
-    }
+    implementation(libs.kotlinx.coroutines.guava)
     implementation(libs.zxing.core)
     implementation(libs.zxing.cpp.android)
 }
@@ -107,10 +107,7 @@ configure<GenerateBpPluginExtension> {
             module.group.startsWith("org.jetbrains") -> true
             module.group == "com.google.android.material" -> true
             module.group == "com.google.auto.value" -> true
-            module.group == "com.google.code.findbugs" -> true
-            module.group == "com.google.errorprone" -> true
             module.group == "com.google.guava" -> true
-            module.group == "junit" -> true
             else -> false
         }
     }

@@ -4,20 +4,21 @@
 #
 
 [versions]
-agp = "8.8.1"
-kotlin = "1.9.23"
+agp = "8.13.0"
+kotlin = "2.1.10"
 activity = "1.9.2"
 appcompat = "1.7.0"
-camera = "1.5.0-beta01"
+camera = "1.5.1"
 coil = "3.0.4"
 constraintlayout = "2.1.4"
 core = "1.13.1"
 exifinterface = "1.3.7"
-kotlinx-coroutines = "1.8.1"
+kotlinx-coroutines = "1.10.1"
 lifecycle = "2.8.5"
 material = "1.9.0"
 media3 = "1.5.0"
 preference = "1.2.1"
+recyclerview = "1.3.2"
 zxing = "3.5.3"
 zxing-cpp = "2.3.0"
 generateBp = "+"
@@ -39,6 +40,7 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
 androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
 coil-video = { group = "io.coil-kt.coil3", name = "coil-video", version.ref = "coil" }
 kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-guava", version.ref = "kotlinx-coroutines" }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+     SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -99,12 +99,18 @@
     <string name="photo_capture_mode_minimize_latency">Giảm thiểu độ trễ</string>
     <string name="enable_zsl_title">Bật ZSL khi khả dụng</string>
     <string name="enable_zsl_summary">Sử dụng chế độ Zero-Shutter Lag khi máy ảnh hỗ trợ. Ở chế độ này, hiệu ứng ảnh bị tắt. Lưu ý rằng chế độ này hiện đang thử nghiệm</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">Lưu hình ảnh dưới dạng JPEG Ultra HDR</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">Lưu hình ảnh dưới dạng JPEG Ultra HDR khi có thể để cải thiện hình ảnh HDR</string>
+    <string name="enable_raw_image_capture_title">Cho phép chụp ảnh RAW</string>
+    <string name="enable_raw_image_capture_summary">Bật chụp ảnh RAW. Ảnh không thể được lưu trữ dưới dạng JPEG Ultra HDR khi chụp ảnh RAW được bật</string>
+    <string name="disable_jpeg_with_raw_title">Vô hiệu hóa JPEG với RAW</string>
+    <string name="disable_jpeg_with_raw_summary">Tắt JPEG khi chụp ảnh RAW được bật</string>
     <string name="photo_ffc_mirror_title">Lật camera trước</string>
     <string name="photo_ffc_mirror_summary">Lưu ảnh từ camera như lúc chúng xuất hiện trong bản xem trước</string>
     <string name="video_stabilization_title">Bật tính năng ổn định video</string>
     <string name="video_stabilization_summary">Nếu khả dụng, hãy bật tính năng ổn định video để giảm rung máy ảnh trong khi quay</string>
     <string name="video_mirror_mode_title">Bật phản chiếu video</string>
-    <string name="processing_title">Đang xử lý</string>
+    <string name="processing_title">Xử lý ảnh</string>
     <string name="processing_info">Trong chế độ ảnh, khi sử dụng chế độ ZSL, chỉ các giá trị mặc định và tắt sẽ được xem xét. Đối với chế độ video, chỉ các giá trị mặc định, tắt và nhanh sẽ được xem xét.</string>
     <string name="edge_mode_title">Làm sắc nét</string>
     <string name="edge_mode_summary">Mở rộng phần viền giúp tăng độ sắc nét và chi tiết trong hình ảnh đã chụp.</string>
