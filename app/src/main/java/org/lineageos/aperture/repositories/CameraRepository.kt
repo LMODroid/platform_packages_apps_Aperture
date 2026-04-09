@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.shareIn
 import org.lineageos.aperture.ext.permissionGranted
 import org.lineageos.aperture.models.Camera
+import org.lineageos.aperture.models.CameraFacing
 
 /**
  * Repository that provides camera devices.
@@ -63,13 +64,13 @@ class CameraRepository(
 
     val mainBackCamera by lazy {
         internalCameras.firstOrNull { camera ->
-            camera.cameraId == DEFAULT_BACK_CAMERA_ID
+            camera.cameraFacing == CameraFacing.BACK
         }
     }
 
     val mainFrontCamera by lazy {
         internalCameras.firstOrNull { camera ->
-            camera.cameraId == DEFAULT_FRONT_CAMERA_ID
+            camera.cameraFacing == CameraFacing.FRONT
         }
     }
 
@@ -115,17 +116,7 @@ class CameraRepository(
         val camera2CameraInfo = Camera2CameraInfo.from(this)
 
         return when (camera2CameraInfo.cameraId) {
-            DEFAULT_BACK_CAMERA_ID -> true.also {
-                require(lensFacing == CameraSelector.LENS_FACING_BACK) {
-                    "Camera with ID ${camera2CameraInfo.cameraId} is not a back camera"
-                }
-            }
-
-            DEFAULT_FRONT_CAMERA_ID -> true.also {
-                require(lensFacing == CameraSelector.LENS_FACING_FRONT) {
-                    "Camera with ID ${camera2CameraInfo.cameraId} is not a front camera"
-                }
-            }
+            in mainCameraIds -> true
 
             else -> {
                 val isIgnoredAuxCamera = overlaysRepository.ignoredAuxCameraIds.contains(
@@ -154,7 +145,12 @@ class CameraRepository(
     ) { "Camera permission not granted" }
 
     companion object {
-        private const val DEFAULT_BACK_CAMERA_ID = "0"
-        private const val DEFAULT_FRONT_CAMERA_ID = "1"
+        /**
+         * List of main camera IDs. These should never be excluded.
+         */
+        private val mainCameraIds = setOf(
+            "0",
+            "1",
+        )
     }
 }

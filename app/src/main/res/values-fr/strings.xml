@@ -99,6 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">Optimiser la latence</string>
     <string name="enable_zsl_title">Activer ZSL lorsque disponible</string>
     <string name="enable_zsl_summary">Utiliser le mode Zero-Shutter Lag lorsque l\'appareil photo le supporte. Dans ce mode, les effets photo sont désactivés. Notez que ce mode est actuellement expérimental</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">Enregistrer les images au format JPEG Ultra HDR</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">Enregistrer les images au format JPEG Ultra HDR lorsqu\'elles sont disponibles pour améliorer les images HDR</string>
+    <string name="enable_raw_image_capture_title">Activer la capture d\'image RAW</string>
+    <string name="enable_raw_image_capture_summary">Activer la capture d\'images RAW. Impossible de stocker les photos au format JPEG Ultra HDR lorsque la capture RAW est activée.</string>
+    <string name="disable_jpeg_with_raw_title">Désactiver JPEG avec RAW</string>
+    <string name="disable_jpeg_with_raw_summary">Désactiver JPEG lorsque la capture d\'image RAW est activée</string>
     <string name="photo_ffc_mirror_title">Caméra frontale en miroir</string>
     <string name="photo_ffc_mirror_summary">Enregistrer les clichés de l\'appareil photo frontal tels qu\'affichés dans l\'aperçu</string>
     <string name="video_stabilization_title">Activer la stabilisation vidéo</string>

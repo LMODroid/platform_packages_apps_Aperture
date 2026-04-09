@@ -99,6 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">உள்ளுறைவைச் சிறுமமாக்கு</string>
     <string name="enable_zsl_title">கிடைக்கும்போது ZSL ஐ இயக்குக</string>
     <string name="enable_zsl_summary">தடுப்பான் காலந்தாழ்வு இன்மை (ZSL) முறையைப் படமி ஒத்துழைக்கும்போது, பயன்படுத்துக; இப்பயன்முறையில் ஒளிப்பட விளைவுகள் முடக்கப்பட்டுள்ளன; இப்பயன்முறை தற்போது செய்முறையில் உள்ளது என்பதை நினைவில் கொள்க</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">படங்களை JPEG உச்ச HDR ஆகச் சேமிக்க</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">HDR படங்களை மேம்படுத்த, கிடைக்கும்போது படங்களை JPEG உச்ச HDR ஆகச் சேமிக்க</string>
+    <string name="enable_raw_image_capture_title">RAW படப்பிடிப்பைச் செயற்படுத்துக</string>
+    <string name="enable_raw_image_capture_summary">RAW படப்பிடிப்பை இயக்குக. RAW படப்பிடிப்பு இயக்கப்படும்போது, ஒளிப்படங்களை JPEG உச்ச HDR ஆகச் சேமிக்க முடியாது</string>
+    <string name="disable_jpeg_with_raw_title">RAW உடன் கூடிய JPEG ஐ முடக்குக</string>
+    <string name="disable_jpeg_with_raw_summary">RAW படப்பிடிப்பு இயக்கப்படும்போது, JPEG ஐ முடக்குக</string>
     <string name="photo_ffc_mirror_title">முன் படமி ஒளித்திருப்பம் </string>
     <string name="photo_ffc_mirror_summary">முன்னோட்டத்தில் தோன்றும்படி முன்படமி ஒளிப்படங்களைச் சேமிக்க</string>
     <string name="video_stabilization_title">நிகழ்பட நிலைப்படுத்தலை இயக்குக</string>

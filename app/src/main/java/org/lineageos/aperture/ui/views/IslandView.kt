@@ -89,7 +89,7 @@ class IslandView @JvmOverloads constructor(
                 view.imageTintList = ColorStateList.valueOf(
                     context.getThemeColor(
                         when (isWarning) {
-                            true -> com.google.android.material.R.attr.colorError
+                            true -> androidx.appcompat.R.attr.colorError
                             false -> com.google.android.material.R.attr.colorOnSurface
                         }
                     )

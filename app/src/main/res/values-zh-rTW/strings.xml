@@ -99,12 +99,12 @@
     <string name="photo_capture_mode_minimize_latency">最小延遲</string>
     <string name="enable_zsl_title">啟用 ZSL (可用時)</string>
     <string name="enable_zsl_summary">在相機支援時啟用零快門延遲 (ZSL) 模式，此模式將會停用相片效果。注意，此模式為實驗性功能</string>
-    <string name="use_photo_jpeg_ultra_hdr_title">將影像另存為 JPEG Ultra HDR</string>
-    <string name="use_photo_jpeg_ultra_hdr_summary">將影像儲存為 JPEG Ultra HDR（如果可用）以改善 HDR 影像</string>
-    <string name="enable_raw_image_capture_title">啟用 RAW 影像捕獲</string>
-    <string name="enable_raw_image_capture_summary">啟用 RAW 影像拍攝。啟用 RAW 拍攝後，照片無法儲存為 JPEG Ultra HDR 格式</string>
-    <string name="disable_jpeg_with_raw_title">禁用 JPEG 以使用 RAW</string>
-    <string name="disable_jpeg_with_raw_summary">啟用 RAW 影像擷取時停用 JPEG</string>
+    <string name="use_photo_jpeg_ultra_hdr_title">儲存為 JPEG Ultra HDR</string>
+    <string name="use_photo_jpeg_ultra_hdr_summary">支援時自動儲存為 JPEG Ultra HDR，提升 HDR 畫質</string>
+    <string name="enable_raw_image_capture_title">啟用 RAW 拍攝</string>
+    <string name="enable_raw_image_capture_summary">啟用 RAW 拍攝。開啟 RAW 拍攝時，相片將無法儲存為 JPEG Ultra HDR 格式</string>
+    <string name="disable_jpeg_with_raw_title">停用 JPEG (僅 RAW)</string>
+    <string name="disable_jpeg_with_raw_summary">RAW 拍攝時不儲存 JPEG</string>
     <string name="photo_ffc_mirror_title">鏡像前置鏡頭</string>
     <string name="photo_ffc_mirror_summary">儲存預覽中顯示的前置鏡頭相片</string>
     <string name="video_stabilization_title">啟用影片防震</string>
@@ -143,7 +143,7 @@
     <string name="distortion_correction_mode_off">關閉</string>
     <string name="distortion_correction_mode_fast">快速</string>
     <string name="distortion_correction_mode_high_quality">高畫質</string>
-    <string name="hot_pixel_mode_title">熱噪點修正</string>
+    <string name="hot_pixel_mode_title">壞點修正</string>
     <string name="hot_pixel_mode_summary">熱燥點修正是對無法準確測量入射光的像素 (即停留在任意值或過敏感的像素) 進行的插入或移除。</string>
     <string name="hot_pixel_mode_default">預設</string>
     <string name="hot_pixel_mode_off">關閉</string>
