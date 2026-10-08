@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2022-2025 The LineageOS Project
+ * SPDX-FileCopyrightText: The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -57,6 +57,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.children
@@ -373,6 +374,10 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
             WindowInsetsControllerCompat.BEHAVIOR_DEFAULT,
             statusBars = false,
         )
+
+        // Force dark navigation bar
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightNavigationBars = false
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
             && keyguardManager.isKeyguardLocked
@@ -1621,7 +1626,7 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
             val camera2Options = cameraConfiguration.camera2Options
 
             // Set Camera2 CaptureRequest options
-            camera2CameraControl.captureRequestOptions = CaptureRequestOptions.Builder()
+            camera2CameraControl.setCaptureRequestOptions(CaptureRequestOptions.Builder()
                 .setFrameRate(
                     when (cameraConfiguration) {
                         is CameraConfiguration.Video -> cameraConfiguration.videoFrameRate
@@ -1647,6 +1652,7 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
                 .setDistortionCorrectionMode(camera2Options.distortionCorrectionMode)
                 .setHotPixelMode(camera2Options.hotPixelMode)
                 .build()
+            )
         }
 
         // Restore settings that can be set on the fly
@@ -1667,7 +1673,7 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
                 }
             )
 
-            if (keyguardLocked != fromCapture) {
+            if (keyguardLocked && !fromCapture) {
                 return@runOnUiThread
             }
 

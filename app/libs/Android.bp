@@ -7,7 +7,7 @@
 
 android_library_import {
     name: "Aperture_androidx.camera_camera-camera2",
-    aars: ["androidx/camera/camera-camera2/1.5.1/camera-camera2-1.5.1.aar"],
+    aars: ["androidx/camera/camera-camera2/1.7.0-alpha03/camera-camera2-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -18,22 +18,61 @@ android_library_import {
         "androidx.annotation_annotation",
         "androidx.annotation_annotation-experimental",
         "androidx.arch.core_core-common",
+        "Aperture_androidx.camera_camera-camera2-pipe",
         "Aperture_androidx.camera_camera-core",
-        "Aperture_androidx.camera.featurecombinationquery_featurecombinationquery",
-        "androidx.concurrent_concurrent-futures",
+        "androidx.concurrent_concurrent-futures-ktx",
         "androidx.core_core",
-        "androidx.lifecycle_lifecycle-common",
+        "Aperture_androidx.core_core-backported-fixes",
         "androidx.lifecycle_lifecycle-livedata-core",
-        "androidx.tracing_tracing",
-        "auto_value_annotations",
+        "Aperture_com.google.dagger_dagger",
         "guava",
+        "kotlin-stdlib",
+        "Aperture_org.jetbrains.kotlinx_atomicfu",
+        "kotlinx-coroutines-android",
+        "kotlinx-coroutines-core",
         "Aperture_org.jspecify_jspecify",
     ],
 }
 
 android_library_import {
+    name: "Aperture_androidx.camera_camera-camera2-pipe",
+    aars: ["androidx/camera/camera-camera2-pipe/1.7.0-alpha03/camera-camera2-pipe-1.7.0-alpha03.aar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "Aperture_androidx.camera_camera-common",
+        "Aperture_androidx.camera.featurecombinationquery_featurecombinationquery",
+        "Aperture_com.google.dagger_dagger",
+        "kotlin-stdlib",
+        "Aperture_org.jetbrains.kotlinx_atomicfu",
+        "kotlinx-coroutines-android",
+    ],
+}
+
+android_library_import {
+    name: "Aperture_androidx.camera_camera-common",
+    aars: ["androidx/camera/camera-common/1.7.0-alpha03/camera-common-1.7.0-alpha03.aar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "kotlin-stdlib",
+        "Aperture_org.jetbrains.kotlinx_atomicfu",
+    ],
+}
+
+android_library_import {
     name: "Aperture_androidx.camera_camera-core",
-    aars: ["androidx/camera/camera-core/1.5.1/camera-core-1.5.1.aar"],
+    aars: ["androidx/camera/camera-core/1.7.0-alpha03/camera-core-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -44,9 +83,11 @@ android_library_import {
         "androidx.annotation_annotation",
         "androidx.annotation_annotation-experimental",
         "androidx.arch.core_core-common",
+        "Aperture_androidx.camera_camera-common",
         "androidx.concurrent_concurrent-futures",
         "androidx.concurrent_concurrent-futures-ktx",
         "androidx.core_core",
+        "Aperture_androidx.core_core-backported-fixes",
         "androidx.exifinterface_exifinterface",
         "androidx.lifecycle_lifecycle-common",
         "androidx.lifecycle_lifecycle-livedata",
@@ -64,7 +105,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.camera_camera-extensions",
-    aars: ["androidx/camera/camera-extensions/1.5.1/camera-extensions-1.5.1.aar"],
+    aars: ["androidx/camera/camera-extensions/1.7.0-alpha03/camera-extensions-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -76,18 +117,20 @@ android_library_import {
         "androidx.annotation_annotation-experimental",
         "Aperture_androidx.camera_camera-core",
         "androidx.concurrent_concurrent-futures",
+        "androidx.concurrent_concurrent-futures-ktx",
         "androidx.core_core",
         "androidx.lifecycle_lifecycle-common",
         "androidx.lifecycle_lifecycle-livedata-core",
         "auto_value_annotations",
         "guava",
+        "kotlin-stdlib",
         "Aperture_org.jspecify_jspecify",
     ],
 }
 
 android_library_import {
     name: "Aperture_androidx.camera_camera-lifecycle",
-    aars: ["androidx/camera/camera-lifecycle/1.5.1/camera-lifecycle-1.5.1.aar"],
+    aars: ["androidx/camera/camera-lifecycle/1.7.0-alpha03/camera-lifecycle-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -105,6 +148,7 @@ android_library_import {
         "androidx.tracing_tracing-ktx",
         "auto_value_annotations",
         "guava",
+        "kotlin-stdlib",
         "kotlinx-coroutines-android",
         "Aperture_org.jspecify_jspecify",
     ],
@@ -112,7 +156,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.camera_camera-video",
-    aars: ["androidx/camera/camera-video/1.5.1/camera-video-1.5.1.aar"],
+    aars: ["androidx/camera/camera-video/1.7.0-alpha03/camera-video-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -127,8 +171,11 @@ android_library_import {
         "androidx.concurrent_concurrent-futures",
         "androidx.concurrent_concurrent-futures-ktx",
         "androidx.core_core",
+        "Aperture_androidx.media3_media3-container",
+        "Aperture_androidx.media3_media3-muxer",
         "auto_value_annotations",
         "guava",
+        "kotlin-stdlib",
         "kotlinx-coroutines-android",
         "Aperture_org.jspecify_jspecify",
     ],
@@ -136,7 +183,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.camera_camera-view",
-    aars: ["androidx/camera/camera-view/1.5.1/camera-view-1.5.1.aar"],
+    aars: ["androidx/camera/camera-view/1.7.0-alpha03/camera-view-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -151,6 +198,7 @@ android_library_import {
         "Aperture_androidx.camera_camera-core",
         "Aperture_androidx.camera_camera-lifecycle",
         "Aperture_androidx.camera_camera-video",
+        "Aperture_androidx.camera.viewfinder_viewfinder-core",
         "androidx.concurrent_concurrent-futures",
         "androidx.core_core",
         "androidx.fragment_fragment",
@@ -159,13 +207,14 @@ android_library_import {
         "androidx.lifecycle_lifecycle-livedata-core",
         "auto_value_annotations",
         "guava",
+        "kotlin-stdlib",
         "Aperture_org.jspecify_jspecify",
     ],
 }
 
 android_library_import {
     name: "Aperture_androidx.camera.featurecombinationquery_featurecombinationquery",
-    aars: ["androidx/camera/featurecombinationquery/featurecombinationquery/1.5.1/featurecombinationquery-1.5.1.aar"],
+    aars: ["androidx/camera/featurecombinationquery/featurecombinationquery/1.7.0-alpha03/featurecombinationquery-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -175,13 +224,14 @@ android_library_import {
     static_libs: [
         "androidx.annotation_annotation",
         "auto_value_annotations",
+        "kotlin-stdlib",
         "Aperture_org.jspecify_jspecify",
     ],
 }
 
 android_library_import {
     name: "Aperture_androidx.camera.viewfinder_viewfinder-core",
-    aars: ["androidx/camera/viewfinder/viewfinder-core/1.5.1/viewfinder-core-1.5.1.aar"],
+    aars: ["androidx/camera/viewfinder/viewfinder-core/1.7.0-alpha03/viewfinder-core-1.7.0-alpha03.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -193,14 +243,31 @@ android_library_import {
         "androidx.core_core",
         "androidx.tracing_tracing-ktx",
         "auto_value_annotations",
+        "kotlin-stdlib",
+        "Aperture_org.jetbrains.kotlinx_atomicfu",
         "kotlinx-coroutines-android",
         "kotlinx-coroutines-core",
     ],
 }
 
 android_library_import {
+    name: "Aperture_androidx.core_core-backported-fixes",
+    aars: ["androidx/core/core-backported-fixes/1.0.0/core-backported-fixes-1.0.0.aar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "kotlin-stdlib",
+    ],
+}
+
+android_library_import {
     name: "Aperture_androidx.media3_media3-common",
-    aars: ["androidx/media3/media3-common/1.5.0/media3-common-1.5.0.aar"],
+    aars: ["androidx/media3/media3-common/1.10.0/media3-common-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -216,7 +283,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-container",
-    aars: ["androidx/media3/media3-container/1.5.0/media3-container-1.5.0.aar"],
+    aars: ["androidx/media3/media3-container/1.10.0/media3-container-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -231,7 +298,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-database",
-    aars: ["androidx/media3/media3-database/1.5.0/media3-database-1.5.0.aar"],
+    aars: ["androidx/media3/media3-database/1.10.0/media3-database-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -246,7 +313,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-datasource",
-    aars: ["androidx/media3/media3-datasource/1.5.0/media3-datasource-1.5.0.aar"],
+    aars: ["androidx/media3/media3-datasource/1.10.0/media3-datasource-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -263,7 +330,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-decoder",
-    aars: ["androidx/media3/media3-decoder/1.5.0/media3-decoder-1.5.0.aar"],
+    aars: ["androidx/media3/media3-decoder/1.10.0/media3-decoder-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -278,7 +345,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-exoplayer",
-    aars: ["androidx/media3/media3-exoplayer/1.5.0/media3-exoplayer-1.5.0.aar"],
+    aars: ["androidx/media3/media3-exoplayer/1.10.0/media3-exoplayer-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -287,8 +354,6 @@ android_library_import {
     ],
     static_libs: [
         "androidx.annotation_annotation",
-        "androidx.collection_collection",
-        "androidx.core_core",
         "androidx.exifinterface_exifinterface",
         "Aperture_androidx.media3_media3-common",
         "Aperture_androidx.media3_media3-container",
@@ -296,12 +361,13 @@ android_library_import {
         "Aperture_androidx.media3_media3-datasource",
         "Aperture_androidx.media3_media3-decoder",
         "Aperture_androidx.media3_media3-extractor",
+        "kotlin-stdlib",
     ],
 }
 
 android_library_import {
     name: "Aperture_androidx.media3_media3-extractor",
-    aars: ["androidx/media3/media3-extractor/1.5.0/media3-extractor-1.5.0.aar"],
+    aars: ["androidx/media3/media3-extractor/1.10.0/media3-extractor-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -317,8 +383,8 @@ android_library_import {
 }
 
 android_library_import {
-    name: "Aperture_androidx.media3_media3-ui",
-    aars: ["androidx/media3/media3-ui/1.5.0/media3-ui-1.5.0.aar"],
+    name: "Aperture_androidx.media3_media3-muxer",
+    aars: ["androidx/media3/media3-muxer/1.10.0/media3-muxer-1.10.0.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -327,9 +393,40 @@ android_library_import {
     ],
     static_libs: [
         "androidx.annotation_annotation",
-        "androidx.media_media",
+        "Aperture_androidx.media3_media3-common",
+        "Aperture_androidx.media3_media3-container",
+    ],
+}
+
+android_library_import {
+    name: "Aperture_androidx.media3_media3-ui",
+    aars: ["androidx/media3/media3-ui/1.10.0/media3-ui-1.10.0.aar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
         "Aperture_androidx.media3_media3-common",
         "androidx.recyclerview_recyclerview",
+    ],
+}
+
+java_import {
+    name: "Aperture_com.google.dagger_dagger",
+    jars: ["com/google/dagger/dagger/2.59/dagger-2.59.jar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "Aperture_jakarta.inject_jakarta.inject-api",
+        "jsr330",
+        "Aperture_org.jspecify_jspecify",
     ],
 }
 
@@ -455,7 +552,7 @@ android_library_import {
 
 android_library_import {
     name: "Aperture_io.github.zxing-cpp_android",
-    aars: ["io/github/zxing-cpp/android/2.3.0/android-2.3.0.aar"],
+    aars: ["io/github/zxing-cpp/android/3.1.1/android-3.1.1.aar"],
     sdk_version: "36",
     min_sdk_version: "26",
     apex_available: [
@@ -464,9 +561,49 @@ android_library_import {
     ],
     static_libs: [
         "Aperture_androidx.camera_camera-core",
-        "kotlin-stdlib-jdk8",
+        "kotlin-stdlib",
     ],
     extract_jni: true,
+}
+
+java_import {
+    name: "Aperture_jakarta.inject_jakarta.inject-api",
+    jars: ["jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+    ],
+}
+
+java_library_static {
+    name: "Aperture_org.jetbrains.kotlinx_atomicfu",
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "Aperture_org.jetbrains.kotlinx_atomicfu-jvm",
+    ],
+}
+
+java_import {
+    name: "Aperture_org.jetbrains.kotlinx_atomicfu-jvm",
+    jars: ["org/jetbrains/kotlinx/atomicfu-jvm/0.28.0/atomicfu-jvm-0.28.0.jar"],
+    sdk_version: "36",
+    min_sdk_version: "26",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    static_libs: [
+        "kotlin-stdlib",
+    ],
 }
 
 java_import {
